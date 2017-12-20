@@ -15,6 +15,12 @@
     margin-bottom: .5rem;
     font-size: 1.2rem;
     font-weight: 600;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  .Business a {
+    color: #333;
   }
   
   .Business-information {
@@ -32,6 +38,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    text-align: left;
   }
   
   .Business-reviews {
