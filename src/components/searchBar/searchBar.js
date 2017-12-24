@@ -19,6 +19,7 @@ class SearchBar extends React.Component {
         this.handleTermChange = this.handleTermChange.bind(this);
         this.handleLocationChange = this.handleLocationChange.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     
     getSortByClass = (sortByOption) => {
@@ -55,6 +56,12 @@ class SearchBar extends React.Component {
         event.preventDefault();
     }
 
+    handleSubmit(event) {
+        if( event.key === 'Enter' && this.state.term !== '' && this.state.location !== '' ) {
+            this.props.searchYelp(this.state.term,this.state.location,this.state.sortBy);
+        }
+    }
+
     render() {
         return(
             <div className="SearchBar">
@@ -64,8 +71,8 @@ class SearchBar extends React.Component {
               </ul>
             </div>
             <div className="SearchBar-fields">
-              <input required="true" placeholder="Search Businesses" onChange={this.handleTermChange}/>
-              <input required="true" placeholder="Where?" onChange={this.handleLocationChange} />
+              <input onKeyPress={this.handleSubmit} placeholder="Search Businesses" onChange={this.handleTermChange}/>
+              <input onKeyPress={this.handleSubmit} placeholder="Where?" onChange={this.handleLocationChange} />
             </div>
             <div className="SearchBar-submit">
               <a className={( '' === this.state.term || '' === this.state.location ) ? 'disabled' : ''} onClick={this.handleSearch}>Let's Go</a>
